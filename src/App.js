@@ -1,24 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/header';
 
+import { Home } from './components/Pages/Home';
+import About from './components/Pages/About';
+import Blog from './components/Pages/Blog';
+import Contact from './components/Pages/Contact';
+import Footer from './components/foooter';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import { StaticKitProvider } from '@statickit/react';
+
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+
+      <div className="pages">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/blog" component={Blog} />
+          <Route path="/contact" component={Contact} />
+        </Switch>
+      </div>
+      <Footer />
+    </Router>
   );
 }
 

@@ -1,38 +1,342 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(21, 177, 177);
+}
+
+.pages {
   text-align: center;
+  font-size: 3.5rem;
+}
+/* 
+
+
+/*home
+
+--------------------------------------------------------------*/
+.navbar span {
+  color: orange;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.des5 {
+  color: #e1306c;
+  font-weight: bolder;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.des4 {
+  color: rgb(141, 99, 20);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.des2 {
+  font-family: 'Quicksand', sans-serif;
+}
+img {
+  box-shadow: whitesmoke 6px 6px 3px;
+  border-radius: 6px;
+  background: linear-gradient(
+    70deg,
+    hsl(0, 0%, 100%) 50%,
+    rgb(233, 149, 81) 50.1%
+  );
+}
+/* } */
+.container1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bolder;
+  color: #f5f5ef;
+  word-wrap: break-word;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  background: linear-gradient(
+    90deg,
+    rgb(233, 149, 81) 70%,
+    rgb(233, 149, 81) 70.1%
+  );
+  box-shadow: whitesmoke 3px 3px 15px;
+  border-radius: 12px;
+}
+.des1 {
+  font-family: 'Cedarville Cursive', cursive;
+  color: #d8793a;
+  word-wrap: break-word;
+  font-weight: bolder;
+  font-size: 3rem;
+}
+
+/* CSS */
+.button-1 {
+  background-color: #8b5610;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Haas Grot Text R Web', 'Helvetica Neue', Helvetica, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-1:hover,
+.button-1:focus {
+  background-color: #f09c64;
+}
+
+/*footer
+
+/*
+    Auther: Abdelrhman Said
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:focus,
+*:active {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* html,
+body {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  place-items: center;
+  background: linear-gradient(315deg, #ffffff, #d7e1ec);
+} */
+
+.wrapper {
+  display: inline-flex;
+  flex-wrap: wrap;
+  float: right;
+
+  position: fixed;
+
+  bottom: 0;
+  width: 100%;
+
+  color: black;
+  /* right: 0; */
+}
+
+.wrapper .icon {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  border-radius: 50%;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  bottom: 0px;
 }
 
-.App-link {
-  color: #61dafb;
+.wrapper .tooltip {
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #ffffff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.wrapper .tooltip::before {
+  position: absolute;
+  content: '';
+  height: 8px;
+  width: 8px;
+  background-color: #ffffff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .icon:hover .tooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .facebook:hover,
+.wrapper .facebook:hover .tooltip,
+.wrapper .facebook:hover .tooltip::before {
+  background-color: #3b5999;
+  color: #ffffff;
+}
+
+.wrapper .twitter:hover,
+.wrapper .twitter:hover .tooltip,
+.wrapper .twitter:hover .tooltip::before {
+  background-color: #46c1f6;
+  color: #ffffff;
+}
+
+.wrapper .instagram:hover,
+.wrapper .instagram:hover .tooltip,
+.wrapper .instagram:hover .tooltip::before {
+  background-color: #e1306c;
+  color: #ffffff;
+}
+
+.wrapper .github:hover,
+.wrapper .github:hover .tooltip,
+.wrapper .github:hover .tooltip::before {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.wrapper .youtube:hover,
+.wrapper .youtube:hover .tooltip,
+.wrapper .youtube:hover .tooltip::before {
+  background-color: #de463b;
+  color: #ffffff;
+}
+
+/*contact*/
+
+/* body {
+  background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
+} */
+
+/* body {
+  background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
+} */
+.contact-form {
+  background: #fff;
+  margin-top: 10%;
+  margin-bottom: 5%;
+  width: 70%;
+}
+.contact-form .form-control {
+  border-radius: 1rem;
+}
+.contact-image {
+  text-align: center;
+}
+.contact-image img {
+  border-radius: 6rem;
+  width: 11%;
+  margin-top: -3%;
+  transform: rotate(29deg);
+}
+.contact-form form {
+  padding: 14%;
+}
+.contact-form form .row {
+  margin-bottom: -7%;
+}
+.contact-form h3 {
+  margin-bottom: 8%;
+  margin-top: -10%;
+  text-align: center;
+  color: #0062cc;
+}
+.contact-form .btnContact {
+  border: none;
+  min-width: 50%;
+  border-radius: 1rem;
+  font-family: Montserrat, sans-serif;
+  padding-left: 2rem 2rem;
+  background: rgb(233, 149, 81);
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: rgb(253, 247, 247) 3px 3px 11px;
+}
+
+.contact-form .btnContact:hover {
+  background: rgb(218, 85, 8);
+  color: #0f2844;
+  box-shadow: #cbdfd2 1px 3px 8px;
+  font-weight: bolder;
+}
+/* 
+.btnContactSubmit {
+  width: 50%;
+  border-radius: 1rem;
+  padding: 1.5%;
+  color: #fff;
+  background-color: #0062cc;
+
+  border: none;
+  cursor: pointer;
+} */
+
+.contact1 {
+  border-radius: 12px;
+  background: linear-gradient(90deg, #fdfffe 70%, rgb(233, 149, 81) 70.1%);
+}
+
+.Skill .projectCard {
+  /* font-family: Montserrat, sans-serif; */
+  font-weight: bolder;
+  /* border-radius: 32px; */
+  word-wrap: break-word;
+  box-shadow: rgb(248, 242, 242) 1px 1px 14px;
+  /* background: linear-gradient(180deg, #fdfffe 70%, rgb(233, 149, 81) 70.1%); */
+}
+.skill2 {
+  font-family: Montserrat, sans-serif;
+}
+.projDes {
+  margin-top: 1rem;
+  font-family: 'Quicksand', sans-serif;
+  /* border-radius: 2rem; */
+  color: #ebe6e2;
+  background-color: #a04b13;
+  box-shadow: #f5f5ef 3px 3px 15px;
+  /* background: linear-gradient(70deg, #fdfffe 70%, rgb(233, 149, 81) 70.1%); */
+}
+
+.projTitle {
+  margin-top: 1rem;
+  font-size: 5px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bolder;
+  color: #af680c;
 }
