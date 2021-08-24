@@ -2,6 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jomoabhi.github.io/portfolio",
   "dependencies": {
     "@statickit/react": "^2.1.1",
     "@testing-library/jest-dom": "^5.14.1",
@@ -11,6 +12,7 @@
     "bootstrap": "^5.1.0",
     "emailjs": "^3.5.0",
     "emailjs-com": "^3.2.0",
+    "gh-pages": "^3.2.3",
     "ityped": "^1.0.3",
     "jquery": "^3.6.0",
     "react": "^17.0.2",
@@ -24,6 +26,8 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+
+    "deploy":"npm run build&& gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
