@@ -4,7 +4,10 @@
 }
 
 body {
-  background-color: rgb(255, 255, 255);
+  background-image: url('C:\Users\Abhinav\Desktop\portfolio\portfolio\src\components\Pages\images\svg(4).png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
 }
 
 .pages {
@@ -32,34 +35,25 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 img {
-  box-shadow: whitesmoke 6px 6px 3px;
+  /* box-shadow: whitesmoke 6px 6px 3px; */
   border-radius: 6px;
-  background: linear-gradient(
-    70deg,
-    hsl(0, 0%, 100%) 50%,
-    rgb(233, 149, 81) 50.1%
-  );
 }
 /* } */
 .container1 {
   font-family: 'Montserrat', sans-serif;
   font-weight: bolder;
-  color: #f5f5ef;
+  color: #8f6313;
   word-wrap: break-word;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  background: linear-gradient(
-    90deg,
-    rgb(233, 149, 81) 70%,
-    rgb(233, 149, 81) 70.1%
-  );
-  box-shadow: whitesmoke 3px 3px 15px;
-  border-radius: 12px;
+
+  /* box-shadow: whitesmoke 3px 3px 15px; */
+  /* border-radius: 12px; */
 }
 .des1 {
   font-family: 'Cedarville Cursive', cursive;
-  color: #d8793a;
+  color: #f7f7f7;
   word-wrap: break-word;
   font-weight: bolder;
   font-size: 3rem;
