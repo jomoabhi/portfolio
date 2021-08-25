@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import { Nav, NavDropdown, Container, Navbar } from 'react-bootstrap';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Nav, Container, Navbar } from 'react-bootstrap';
 import '../App.css';
 
 function Header() {
-  const [click, setClick] = useState(false);
   const a1 = '<';
   const a2 = '/>';
-  const handleClick = () => setClick(!click);
   return (
     <Navbar
       className="des2"

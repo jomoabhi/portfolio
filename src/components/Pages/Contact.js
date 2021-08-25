@@ -1,140 +1,155 @@
 import React from 'react';
-import emailjs from 'emailjs-com';
 import '../../App.css';
+import axios from 'axios';
+import classNames from 'classnames';
 // import './ContactUs.css';
-import { Alert } from 'react-bootstrap';
 class Contact extends React.Component {
   state = {
-    result: '',
-    error: '',
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+    errors: '',
+    noerrors: '',
   };
-  close1 = () => {
-    this.setState({ result: '', error: '' });
-    window.location = '/Contact';
+  // resetForm = (e) => {
+  //   e.preventDefault();
+  //   this.setState({
+  //     name: '',
+  //     email: '',
+  //     phone: '',
+  //     message: '',
+  //     errors: '',
+  //   });
+  // };
+  onChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+
+    this.setState({ errors: '' });
+
+    const re =
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (e.target.name === 'email' && this.state.email.length > 3) {
+      if (!re.test(this.state.email)) {
+        console.log('hey');
+        this.setState({ errors: 'please enter a valid email', noerrors: '' });
+      } else {
+        this.setState({ noerrors: 'yes', errors: '' });
+      }
+    }
   };
-  sendEmail = (e) => {
+
+  onSubmit = (e) => {
     e.preventDefault();
-    const { result, error } = this.state;
-    emailjs
-      .sendForm(
-        'service_316bsla',
-        'template_2q68fmc',
-        e.target,
-        'user_Ylbdt4NAGflpRhbWFgA61'
-      )
-      .then(
-        (result) => {
-          // document.querySelector('.alert').alert();
-          // alert('message Send Successfully!');
-          this.setState({ result: 'yes' });
-        },
-        (error) => {
-          this.setState({ error: 'yes' });
-          console.log(error.text);
-        }
-      );
+    console.log(this.state.email, this.state.message);
+    const re =
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!re.test(this.state.email)) {
+      console.log('hey');
+      this.setState({ errors: 'please enter a valid email' });
+      return;
+    }
+    axios({
+      method: 'POST',
+      url: 'https://jomobackcontact.herokuapp.com/access',
+      data: {
+        message: this.state.message,
+        email: this.state.email,
+      },
+    }).then((response) => {
+      console.log(response);
+      if (response.data.status === 'success') {
+        alert('Message Sent!');
+        this.setState({
+          name: '',
+          email: '',
+          phone: '',
+          message: '',
+          errors: '',
+          noerrors: '',
+        });
+      } else if (response.data.status === 'fail') {
+        alert('Oops, something went wrong. Try again');
+      }
+    });
   };
   render() {
-    const { result, error } = this.state;
+    const { errors, email, phone, name, message, noerrors } = this.state;
     return (
       <div
-        class="container contact-form contact1"
+        className="container contact-form contact1"
         style={{ boxShadow: 'lightgrey 2px 2px 16px' }}
       >
-        {result && (
-          <p
-            class="alert alert-success alert-dismissible fade show"
-            role="alert"
-            style={{
-              top: '0',
-              height: 'fit-content',
-              width: 'fit-content',
-              zIndex: '15',
-              margin: 'auto',
-              fontSize: 'small',
-            }}
-          >
-            Messeage send Successfully!
-            {/* <button onClick={this.close1}>click</button> */}
-            <button type="button" class="close" onClick={this.close1}>
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </p>
-        )}
-        {error && (
-          <p
-            class="alert alert-danger alert-dismissible fade show"
-            role="alert"
-            style={{
-              top: '0',
-              height: 'fit-content',
-              width: 'fit-content',
-              zIndex: '15',
-              margin: 'auto',
-              fontSize: 'small',
-            }}
-          >
-            Messeage not send!
-            {/* <button onClick={this.close1}>click</button> */}
-            <button type="button" class="close" onClick={this.close1}>
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </p>
-        )}
-
-        <form onSubmit={this.sendEmail.bind(this)}>
+        <form onSubmit={this.onSubmit.bind(this)}>
           <h3 className="des4" style={{ color: 'orange' }}>
             Drop a Message
           </h3>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
+          <div className="row">
+            <div className="col-md-6">
+              <div className="form-group">
                 <input
-                  type="text"
-                  name="user_name"
-                  class="form-control "
+                  className="form-control "
                   placeholder="Your Name *"
-                  required="true"
-                  // value=""
+                  type="text"
+                  name="name"
+                  onChange={this.onChange}
+                  value={name}
                 />
               </div>
 
-              <div class="form-group">
+              <div className="form-group">
                 <input
-                  type="text"
-                  name="user_email"
-                  class="form-control"
-                  placeholder="Your Email *"
-                  required="true"
+                  className={classNames(
+                    'form-control',
+                    {
+                      'is-invalid': errors,
+                    },
+                    { 'is-valid': noerrors }
+                  )}
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  onChange={this.onChange}
+                  value={email}
                 />
+                {errors && (
+                  <div style={{ height: '2rem', color: 'red' }}>
+                    <h6>{errors}</h6>
+                  </div>
+                )}
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <input
+                  className="form-control"
+                  name="phone"
                   type="text"
-                  name="contact_number"
-                  class="form-control"
-                  placeholder="Your Phone Number *"
+                  placeholder="Contact No."
+                  onChange={this.onChange}
+                  value={phone}
 
                   // value=""
                 />
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <textarea
+            <div className="col-md-6">
+              <div className="form-group">
+                <input
+                  className="form-control"
                   name="message"
-                  class="form-control"
-                  placeholder="Your Message *"
-                  required="true"
+                  type="text"
+                  placeholder="Your Message..."
+                  onChange={this.onChange}
+                  value={message}
+                  required
                   style={{ width: '100%', height: '150px' }}
-                ></textarea>
+                />
               </div>
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <button
                 type="submit"
                 name="btnSubmit"
-                class="btnContact"
+                className="btnContact"
 
                 // value="Send"
               >

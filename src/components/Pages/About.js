@@ -1,28 +1,25 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Card, Button, ListGroup } from 'react-bootstrap';
-import Hello from './animation';
+
 // import { web } from 'webpack';
 export default class About extends Component {
   state = {
-    web: {
-      l1: '',
-      l2: '',
-      l3: '',
-      l4: '',
-      l5: '',
-      l6: '',
-      l7: '',
-    },
+    l1: '',
+    l2: '',
+    l3: '',
+    l4: '',
+    l5: '',
+    l6: '',
+    l7: '',
   };
 
   showcontent = (e) => {
     e.preventDefault();
-    const { l1, l2, l3 } = this.state;
+    // const { l1, l2, l3 } = this.state;
     // let web1 = ['React', 'NodeJs'];
     this.setState({
       l1: 'Reactjs',
       l2: 'Nodejs',
-      l3: 'Expressjs',
       l4: 'MongoDB',
     });
     // console.log(web1);
@@ -30,12 +27,12 @@ export default class About extends Component {
 
   hidecontent = (e) => {
     e.preventDefault();
-    const { web } = this.state;
+    // const { web } = this.state;
     this.setState({ l1: '', l2: '', l3: '', l4: '' });
   };
   showcontent1 = (e) => {
     e.preventDefault();
-    const { l5, l6, l7 } = this.state;
+    // const { l5, l6, l7 } = this.state;
     // let web1 = ['React', 'NodeJs'];
     this.setState({
       l5: 'C++',
@@ -47,7 +44,7 @@ export default class About extends Component {
 
   hidecontent1 = (e) => {
     e.preventDefault();
-    const { web } = this.state;
+    // const { web } = this.state;
     this.setState({ l5: '', l6: '', l7: '' });
   };
 
@@ -84,7 +81,7 @@ export default class About extends Component {
                   <ListGroup.Item variant="secondary">Secondary</ListGroup.Item> */}
                   <ListGroup.Item variant="success">{l1}</ListGroup.Item>
                   <ListGroup.Item variant="danger">{l2}</ListGroup.Item>
-                  <ListGroup.Item variant="warning">{l3}</ListGroup.Item>
+                  {/* <ListGroup.Item variant="warning">{l3}</ListGroup.Item> */}
                   <ListGroup.Item variant="info">{l4}</ListGroup.Item>
                   {/* <ListGroup.Item variant="light">Light</ListGroup.Item>
                   <ListGroup.Item variant="dark">Dark</ListGroup.Item> */}

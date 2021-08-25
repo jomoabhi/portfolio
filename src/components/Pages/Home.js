@@ -18,14 +18,14 @@ export const Home = () => {
           </div>
           {/* <br /> */}
           <a href={mycv} download>
-            <button class="button-1" role="button">
+            <button className="button-1" role="button">
               .DownloadCV()
             </button>
           </a>
           <div>
             <Link to="/Contact">
               {' '}
-              <button class="button-1" role="button">
+              <button className="button-1" role="button">
                 .HireMe()
               </button>
             </Link>

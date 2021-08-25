@@ -14,22 +14,21 @@ export default class Blog extends React.Component {
   showBody = (id, e) => {
     e.preventDefault();
     console.log(id);
-    if (id == 1) {
+    if (id === 1) {
       this.setState({ des: 'yes' });
-    } else if (id == 2) {
+    } else if (id === 2) {
       this.setState({ des2: 'yes' });
-    } else if (id == 3) this.setState({ des3: 'yes' });
+    } else if (id === 3) this.setState({ des3: 'yes' });
   };
 
   hideBody = (id, e) => {
     e.preventDefault();
-    if (id == 1) this.setState({ des: '' });
-    else if (id == 2) this.setState({ des2: '' });
-    else if (id == 3) this.setState({ des3: '' });
+    if (id === 1) this.setState({ des: '' });
+    else if (id === 2) this.setState({ des2: '' });
+    else if (id === 3) this.setState({ des3: '' });
   };
   render() {
     const { des, des2, des3 } = this.state;
-    let id;
     return (
       <Container>
         <Row>
@@ -54,7 +53,7 @@ export default class Blog extends React.Component {
                 <Card.Body>
                   <p
                     className="des2"
-                    style={{ fontSize: '2rem', color: 'darkgrey' }}
+                    style={{ fontSize: '1.6rem', color: 'Black' }}
                   >
                     This is a Contact Manager App which is Created using
                     Reactjs.
@@ -91,7 +90,11 @@ export default class Blog extends React.Component {
                 <Card.Body>
                   <p
                     className="des2"
-                    style={{ fontSize: '2rem', color: 'darkgrey' }}
+                    style={{
+                      fontSize: '1.4rem',
+                      color: 'Black',
+                      backgroundColor: 'smokewhite',
+                    }}
                   >
                     This is a Task Manager Web-Appliaction.It is created using
                     Html,Css,JavaScript,Nodejs,MongoDB
@@ -128,7 +131,7 @@ export default class Blog extends React.Component {
                 <Card.Body>
                   <p
                     className="des2"
-                    style={{ fontSize: '2rem', color: 'darkgrey' }}
+                    style={{ fontSize: '1.6rem', color: 'black' }}
                   >
                     This is a Weather App which is Created using Nodejs.
                   </p>
